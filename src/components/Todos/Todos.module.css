@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #313131;
+  color: #ccd1d3;
+  font-family: sf pro light, helvetica neue, open sans, Helvetica, Arial,
+    sans-serif;
+}
+.todos_form {
+  max-width: 970px;
+  position: relative;
+  margin: 0 auto;
+}
+.todos {
+  margin-top: 2rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.title {
+  letter-spacing: 0.08rem;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+.select {
+  width: 150px;
+  height: 34px;
+  border-radius: 3px;
+  border: 1px solid #bdbdbd;
+  background: transparent;
+  font-size: 15px;
+  color: white;
+}
+
+.input {
+  width: 721px;
+  height: 34px;
+  border-radius: 3px;
+  padding-left: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border: 1px solid #bdbdbd;
+  background: transparent;
+}
+.add {
+  border: 1px solid #bdbdbd;
+  border-radius: 3px;
+  width: 33px;
+  height: 34px;
+  background: transparent;
+  font-size: 15px;
+  color: white;
+}
+.plan {
+  border-radius: 3px;
+  border: 1px solid #bdbdbd;
+  background: transparent;
+  font-size: 15px;
+  color: white;
+  height: 34px;
+  width: 33px;
+}
+.text__todos {
+  text-align: center;
+  margin: 25px 0 10px 0;
+  font-size: 16px;
+}
+.icon__list {
+  color: #438ad0;
+  font-size: 16px;
+}
+.text__todos span {
+  color: #438ad0;
+  font-size: 18.4px;
+}
