@@ -1,11 +1,13 @@
-import Todos from './components/Todos/Todos'
+// import Todos from './components/Todos/Todos'
 import './App.css'
+import Timer from './components/Timer/Timer'
 
 function App() {
 
   return (
     <>
-      <Todos/>
+      <Timer />
+      {/* <Todos/> */}
     </>
   )
 }
