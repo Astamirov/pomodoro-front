@@ -19,13 +19,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 15px;
 }
 .title {
   letter-spacing: 0.08rem;
   margin: 0.5rem 0;
   text-align: center;
 }
+form{
+  display: flex;
+  align-items: center;
+}
 .select {
+  outline:none;
   width: 150px;
   height: 34px;
   border-radius: 3px;
@@ -33,9 +39,12 @@ body {
   background: transparent;
   font-size: 15px;
   color: white;
+  margin-right: 17.5px;
 }
 
 .input {
+  outline:none;
+  color: white;
   width: 721px;
   height: 34px;
   border-radius: 3px;
@@ -46,13 +55,18 @@ body {
   background: transparent;
 }
 .add {
-  border: 1px solid #bdbdbd;
+  outline:none;
   border-radius: 3px;
-  width: 33px;
-  height: 34px;
+  border: 1px solid #bdbdbd;
   background: transparent;
-  font-size: 15px;
+  font-size: 12px;
   color: white;
+  height: 34px;
+  width: 33px;
+  overflow: none;
+}
+option {
+  color: black;
 }
 .plan {
   border-radius: 3px;
@@ -67,6 +81,7 @@ body {
   text-align: center;
   margin: 25px 0 10px 0;
   font-size: 16px;
+
 }
 .icon__list {
   color: #438ad0;
@@ -76,3 +91,29 @@ body {
   color: #438ad0;
   font-size: 18.4px;
 }
+.list{
+ margin-top: 10px;
+  padding: 5px 6px;
+  width: 921px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.1rem solid #bdbdbd;
+}
+
+.count{
+  text-align: center;
+  width: 22px;
+  height: 21px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 0.1rem solid #bdbdbd;
+}
+
+.text{
+  width: 719px;
+  flex: 1;
+}
+.category{
+  width: 166px;
+}
+
