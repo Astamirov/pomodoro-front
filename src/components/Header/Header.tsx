@@ -1,4 +1,4 @@
-import {NavLink} from 'react-router-dom'
+// import {NavLink} from 'react-router-dom'
 
 const Header = () => {
   return (
@@ -6,13 +6,13 @@ const Header = () => {
     <nav>
       <ul>
         <li>
-          <NavLink to="/">Pomodoro Tracker</NavLink>
+          Pomodoro Tracker
         </li>
         <li>
-          <NavLink to="/statistics">Статистика</NavLink>
+          Статистика
         </li>
         <li>
-          <NavLink to="/settings">Настройки</NavLink>
+          Настройки
         </li>
       </ul>
     </nav>
