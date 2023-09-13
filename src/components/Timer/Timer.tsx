@@ -83,7 +83,7 @@ const Timer = () => {
   const startTimer = () => {
     if (intervalRef.current !== null) {
       clearInterval(intervalRef.current);
-    }
+    }   
     setIsRunning(true);
 
     intervalRef.current = setInterval(() => {
