@@ -26,12 +26,12 @@ body {
   margin: 0.5rem 0;
   text-align: center;
 }
-form{
+form {
   display: flex;
   align-items: center;
 }
 .select {
-  outline:none;
+  outline: none;
   width: 150px;
   height: 34px;
   border-radius: 3px;
@@ -43,7 +43,7 @@ form{
 }
 
 .input {
-  outline:none;
+  outline: none;
   color: white;
   width: 721px;
   height: 34px;
@@ -55,8 +55,10 @@ form{
   background: transparent;
 }
 .add {
-  outline:none;
-  border-radius: 3px;
+  border-left: 0;
+  outline: none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
   border: 1px solid #bdbdbd;
   background: transparent;
   font-size: 12px;
@@ -69,6 +71,7 @@ option {
   color: black;
 }
 .plan {
+  padding-top: 2px;
   border-radius: 3px;
   border: 1px solid #bdbdbd;
   background: transparent;
@@ -81,7 +84,6 @@ option {
   text-align: center;
   margin: 25px 0 10px 0;
   font-size: 16px;
-
 }
 .icon__list {
   color: #438ad0;
@@ -91,8 +93,8 @@ option {
   color: #438ad0;
   font-size: 18.4px;
 }
-.list{
- margin-top: 10px;
+.list {
+  margin-top: 10px;
   padding: 5px 6px;
   width: 921px;
   display: flex;
@@ -100,20 +102,81 @@ option {
   border-bottom: 0.1rem solid #bdbdbd;
 }
 
-.count{
+.count {
+  color: white;
+  cursor: pointer;
   text-align: center;
-  width: 22px;
-  height: 21px;
+  width: 34px;
+  height:33px;
+  padding: 1px;
+  font-size: 18px;
   border-radius: 50%;
   background-color: transparent;
   border: 0.1rem solid #bdbdbd;
 }
 
-.text{
+.text {
   width: 719px;
   flex: 1;
 }
-.category{
+.category {
   width: 166px;
 }
+.icon__list2 {
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
 
+  color: white;
+  border: 1px solid #bdbdbd;
+  border-radius: 3px;
+  font-size: 16px;
+  background-color: transparent;
+  height: 34px;
+  width: 33px;
+  overflow: none;
+}
+.margin{
+  margin-bottom: 60px;
+
+}
+.todo__list{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.setting__todo{
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  top: -96px;
+  right: -156px;
+  justify-content: space-between;
+  width: 190px;
+  position: absolute;
+  height: 110px;
+  background: #1f4d7a;
+  color: white;
+}
+.setting__todo button{
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  text-align: left;
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 2px 0 0 5px;
+  margin-bottom: 5px;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+.setting__todo hr{
+  margin: 0 1px;
+}
+
+hr{
+  border-bottom: 0.1px solid #a9a9a9;
+}
