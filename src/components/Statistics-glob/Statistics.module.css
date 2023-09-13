@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.statistics_container {
+    max-width: 970px;
+    margin: auto;
+}
+.header_satatistics {
+
+}
+.header_user_info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px 0 0 0;
+    border-bottom: 1px solid #FFF;
+}
+.user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.user:hover {
+    border-bottom: 3px solid #a6cee3;
+    color: #FFF;
+}
+.users {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.users:hover {
+    border-bottom: 3px solid #a6cee3;
+    color: #FFF;
+}
+.icon_user {
+    font-size: 20px;
+    margin-right: 4px;
+}
+.icon_users {
+    font-size: 20px;
+    margin-right: 4px;
+}
+.global_raiting {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px 0 0 0;
+}
+.btn_green {
+    height: 30px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    padding: 5px 5px 5px 4px;
+    cursor: pointer;
+    background-color: greenyellow;
+    border-radius: 50px;
+}
+.mode {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+.switching {
+    height: 25px;
+    width: 25px;
+    background-color: #FFF;
+    border-radius: 50%;
+}
+.global_statistics {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+.day_hour {
+    display: flex;
+    align-items: center;
+    border: 1px solid #FFF;
+}
+.navigation_arrow {
+    display: flex;
+    align-items: center;
+    border: 1px solid #FFF;
+}
+.btn_left {
+    cursor: pointer;
+}
+.btn_right {
+    cursor: pointer;
+}
+.today {
+    padding: 5px;
+    cursor: pointer;
+    background: transparent;
+    color: gainsboro;
+    font-size: 16px;
+    transition: .4s;
+}
+.today:hover {
+    background-color: grey;
+}
+.today:focus {
+    background-color: green;
+}
+.day {
+    transform: .4s;
+    padding: 5px;
+    cursor: pointer;
+    background: transparent;
+    color: gainsboro;
+    font-size: 16px;
+}
+.day:hover {
+    background-color: grey;
+}
+.day:focus {
+    background-color: green;
+}
+.month {
+    padding: 5px;
+    cursor: pointer;
+    transition: .4s;
+    background: transparent;
+    color: gainsboro;
+    font-size: 16px;
+}
+.month:hover {
+    background-color: grey;
+}
+.month:focus {
+    background-color: green;
+}
+.users_stat {
+    border-bottom: 2px solid gray;
+}
+.timer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user_h5 {
+    margin-bottom: 10px;
+}
+.timer_user {
+    display: flex;
+    align-items: center;
+}
+.pomidor_user {
+    margin-left: 15px;
+}
+.block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid gray;
+    margin-bottom: 30px;
+    transition: .1s;
+}
+.block:hover {
+    background-color: grey;
+    border-radius: 5px;
+}
+.block_users {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+.block_timer {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-right: 60px;
+}
+.pomidor {
+    margin-right: -30px;
+}
+.time {
+    margin-right: 25px;
+}
+.user_sait {
+    margin-right: 30px;
+    font-size: 30px;
+}
+.index_user {
+    margin-right: 30px;
+    margin-left: 25px;
+}
