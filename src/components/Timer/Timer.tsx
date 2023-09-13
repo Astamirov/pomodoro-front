@@ -62,22 +62,18 @@ const Timer = () => {
 
   useEffect(() => {
     if (mainTime === 0 && !isBreakTime) {
-      // Таймер рабочего времени завершился
       setTitle("Break");
       setIsBreakTime(true);
       startTimer();
     } else if (breakTime === 0 && isBreakTime) {
-      // Таймер времени перерыва завершился
       setTitle("Let the countdown begin!");
       setIsBreakTime(false);
       startTimer();
     } else if (mainTime < 0 && !isBreakTime) {
-      // Если mainTime стал отрицательным (завершился), переводим на время перерыва
       setTitle("Break");
       setIsBreakTime(true);
       setMainTime(initialMainTime);
     } else if (breakTime < 0 && isBreakTime) {
-      // Если breakTime стал отрицательным (завершился), переводим на рабочее время
       setTitle("Let the countdown begin!");
       setIsBreakTime(false);
       setBreakTime(initialBreakTime);
@@ -90,6 +86,7 @@ const Timer = () => {
     }
 
     setIsRunning(true);
+    
 
     intervalRef.current = setInterval(() => {
       if (isBreakTime && breakTime > 0) {
