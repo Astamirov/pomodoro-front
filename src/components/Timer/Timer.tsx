@@ -83,11 +83,9 @@ const Timer = () => {
   const startTimer = () => {
     if (intervalRef.current !== null) {
       clearInterval(intervalRef.current);
-    }
-
+    }   
     setIsRunning(true);
-    
-
+  
     intervalRef.current = setInterval(() => {
       if (isBreakTime && breakTime > 0) {
         setBreakTime((prevBreakTime) => prevBreakTime - 1);
@@ -128,7 +126,7 @@ const Timer = () => {
   const seconds = padTime(isBreakTime ? breakTime % 60 : mainTime % 60);
 
   const timerStyle = {
-    backgroundColor: isBreakTime ? "green" : "#be3939",
+    backgroundColor: isBreakTime ? "#388f38" : "#a94442",
   };
 
   return (
@@ -156,7 +154,7 @@ const Timer = () => {
             Start
           </button>
         )}
-        {isRunning && !isBreakTime ? (
+        {isRunning ? (
           <button className={style.button} onClick={stopTimer}>
             Pause
           </button>
