@@ -6,7 +6,6 @@ import { SlSocialVkontakte } from "react-icons/sl";
 import { RiWhatsappFill } from "react-icons/ri";
 
 const Footer = () => {
-  
   return (
     <div className={style.footer}>
       <div className={style.footer_container}>
