@@ -1,11 +1,15 @@
+
+import Todos from './components/Todos/Todos';
+import Footer from './components/Footer/Footer';
+
 import './App.css'
-import Todos from './components/Todos/Todos'
 
 function App() {
 
   return (
     <>
       <Todos/>
+      <Footer/>
     </>
   )
 }
