@@ -85,7 +85,7 @@ const Timer = () => {
       clearInterval(intervalRef.current);
     }   
     setIsRunning(true);
-
+  
     intervalRef.current = setInterval(() => {
       if (isBreakTime && breakTime > 0) {
         setBreakTime((prevBreakTime) => prevBreakTime - 1);
