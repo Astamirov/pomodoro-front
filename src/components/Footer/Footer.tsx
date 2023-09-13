@@ -79,23 +79,37 @@ const Footer = () => {
           <div className={style.footer_version}>
             <div className={style.version_block}>
               <div>
-                <a className={style.icon_partner} href="">Version 22.0.4</a>
+                <a className={style.icon_partner} href="">
+                  Version 22.0.4
+                </a>
               </div>
               <div>
-              <a className={style.icon_partner} href="">Privacy Policy</a>  
+                <a className={style.icon_partner} href="">
+                  Privacy Policy
+                </a>
               </div>
               <div>
-               <a className={style.icon_partner} href="">Terms and Conditions</a> 
+                <a className={style.icon_partner} href="">
+                  Terms and Conditions
+                </a>
               </div>
               <div>
-                <a className={style.icon_partner} href="">Slack Community</a>
+                <a className={style.icon_partner} href="">
+                  Slack Community
+                </a>
               </div>
             </div>
-            <div className={style.footer_email}><a href="">horneds@gmail.com <span></span>2015</a></div>
+            <div className={style.footer_email}>
+              <a className={style.footer_email_text} href="">
+                horneds@gmail.com <span></span>2015
+              </a>
+            </div>
             <div className={style.footer_bottom_text}>
-            Pomodoro-Tracker is not related to the Pomodoro Technique™/Pomodoro™’s trademark holder Cirillo Company and respects its trademarks.
-Pomodoro Technique® and Pomodoro® are registered trademarks of Francesco Cirillo.
-All logos and marks contained herein are the property of their respective owners.
+              Pomodoro-Tracker is not related to the Pomodoro
+              Technique™/Pomodoro™’s trademark holder Cirillo Company and
+              respects its trademarks. Pomodoro Technique® and Pomodoro® are
+              registered trademarks of Francesco Cirillo. All logos and marks
+              contained herein are the property of their respective owners.
             </div>
           </div>
         </div>
