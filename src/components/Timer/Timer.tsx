@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import style from "./Timer.module.css";
 import { BsGear, BsArrowRightCircleFill } from "react-icons/bs";
 import SettingsModal from "./SettingModal";
+import dingSound from "./sounds/zvonok.mp3";
 
 const padTime = (time: number) => {
   return time.toString().padStart(2, "0");
@@ -17,6 +18,7 @@ const Timer = () => {
   const intervalRef = useRef<number | null>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [isBreakTime, setIsBreakTime] = useState(false);
+  const audioRef = useRef(new Audio(dingSound));
 
   const handleApplyBreakTime = () => {
     setIsSettingsOpen(true);
@@ -29,14 +31,34 @@ const Timer = () => {
       setIsRunning(false);
     }
     intervalRef.current = null;
-    const wasBreakTime = isBreakTime;
-    if (!wasBreakTime) {
-      setMainTime(initialMainTime); // Возвращаемся к начальному времени работы
+
+    if (!isBreakTime) {
+      setMainTime(initialMainTime);
     } else {
-      setBreakTime(initialBreakTime); // Возвращаемся к начальному времени перерыва
+      setBreakTime(initialBreakTime);
     }
-    setIsBreakTime(!wasBreakTime);
+    audioRef.current.play();
   }, [initialMainTime, initialBreakTime, isBreakTime]);
+
+  const toggleBreak = () => {
+    setIsBreakTime(!isBreakTime);
+  };
+
+  const handleSkip = () => {
+    toggleBreak();
+    resetTimer();
+  };
+
+  const handleStop = () => {
+    if (isBreakTime) {
+      // Если текст кнопки "Пропустить", то переходите к рабочему времени
+      setIsBreakTime(false);
+      resetTimer();
+    } else {
+      // Если текст кнопки "Stop", то просто сбрасываем таймер
+      resetTimer();
+    }
+  };
 
   useEffect(() => {
     if (mainTime === 0 && !isBreakTime) {
@@ -137,14 +159,20 @@ const Timer = () => {
             Start
           </button>
         )}
-        {isRunning && (
+        {isRunning && !isBreakTime ? (
           <button className={style.button} onClick={stopTimer}>
-            Stop
+            Pause
+          </button>
+        ) : (
+          <button className={style.button} onClick={handleStop}>
+            {isBreakTime ? "Пропустить" : "Stop"}
           </button>
         )}
-        <button className={style.button} onClick={resetTimer}>
-          Reset
-        </button>
+        {isRunning && (
+          <button className={style.button} onClick={handleSkip}>
+            Сделано
+          </button>
+        )}
       </div>
 
       {isSettingsOpen && (
