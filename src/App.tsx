@@ -1,4 +1,6 @@
 
+// import Language from './components/Header/Translation/Language'
+
 import Header from "./components/Header/Header";
 // import Statistics from "./components/Statistics-glob/Statistics";
 import Timer from "./components/Timer/Timer";
@@ -14,6 +16,9 @@ import SignUp from "./components/SignUp/SignUp";
 function App() {
   return (
     <>
+
+      {/* <Language /> */}
+
       <Routes>
         <Route path="/" element={
           <>
@@ -29,6 +34,7 @@ function App() {
         <Route path="/auth" element={<SignUp/>}/>
         {/* <Statistics/> */}
       </Routes>
+
 
     </>
   );
