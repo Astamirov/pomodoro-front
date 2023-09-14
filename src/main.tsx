@@ -1,6 +1,5 @@
 import './components/Header/18n.js'
-import React, { Suspense } from 'react'
-import './components/Header/Translation/18n'
+import React from 'react'
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import { Provider } from "react-redux";

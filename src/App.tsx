@@ -14,22 +14,22 @@ import SignUp from "./components/SignUp/SignUp";
 function App() {
   return (
     <>
-      <Profille/>
+      
       <Header />
       <Routes>
         <Route path="/" element={
           <>
-          <Header />
           <Timer />
           <Todos />
           <Sliders />
           <Footer />
           </>
         }/>
-  
+        <Route path="/prof" element={<Profille/>}/>
         <Route path="/login" element={<SignIn/>}/>
         <Route path="/auth" element={<SignUp/>}/>
-        {/* <Statistics/> */}
+        <Route path="/stat" element={<Statistics/>}/>
+        
       </Routes>
 
 

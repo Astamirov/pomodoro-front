@@ -22,7 +22,7 @@ const Timer = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [isBreakTime, setIsBreakTime] = useState(false);
   const audioRef = useRef(new Audio(dingSound));
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const todos = useSelector((state: RootState) => state.todosReducer.todos);
 
