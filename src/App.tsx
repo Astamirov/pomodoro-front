@@ -2,6 +2,7 @@
 // import Language from './components/Header/Translation/Language'
 
 import Header from "./components/Header/Header";
+import Profille from './components/Profille/Profille';
 // import Statistics from "./components/Statistics-glob/Statistics";
 import Timer from "./components/Timer/Timer";
 import Todos from "./components/Todos/Todos";
@@ -18,6 +19,7 @@ function App() {
     <>
 
       {/* <Language /> */}
+      <Profille/>
 
       <Routes>
         <Route path="/" element={
@@ -33,6 +35,7 @@ function App() {
         <Route path="/login" element={<SignIn/>}/>
         <Route path="/auth" element={<SignUp/>}/>
         {/* <Statistics/> */}
+
       </Routes>
 
 
