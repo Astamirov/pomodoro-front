@@ -1,0 +1,78 @@
+.ideas {
+    width: 970px;
+    margin: 0 auto;
+    background-color: #313131;
+    color: #fff;
+}
+
+.ideas__nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+.navLink {
+    text-align: center;
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #b0feed44;
+}
+
+.navLink__new{
+    border-bottom: 2px solid #b0feed;
+}
+
+.todos__ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .comment {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .comment span {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  
+  .comment button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .comment button:hover {
+    background-color: #c0392b;
+  }
+  
+  .input[type="text"] {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
