@@ -1,153 +1,145 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 .footer {
-    padding: 30px 0;
+  padding: 30px 0;
 }
 .footer_container {
-    max-width: 970px;
-    margin: auto;
+  max-width: 970px;
+  margin: auto;
 }
 .block_company {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
 }
 .left_block {
-    display: flex;
-    align-items: center;
-    height: 50px;
-    width: 230px;
-    background-color: #efefef;
-    padding: 5px 5px 5px 5px;
-    border-radius: 10px;
-    margin-left: 35px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 230px;
+  background-color: #efefef;
+  padding: 5px 5px 5px 5px;
+  border-radius: 10px;
+  margin-left: 35px;
 }
 .right_block {
-    display: flex;
-    align-items: center;
-    height: 55px;
-    width: 230px;
-    background-color: black;
-    padding: 5px 5px 5px 15px;
-    border-radius: 10px;
-    margin-left: 35px;
+  display: flex;
+  align-items: center;
+  height: 55px;
+  width: 230px;
+  background-color: black;
+  padding: 5px 5px 5px 15px;
+  border-radius: 10px;
+  margin-left: 35px;
 }
 .icon_apple {
-    font-size: 30px;
-    color: black;
+  font-size: 30px;
+  color: black;
 }
 .icon_microsoft {
-    font-size: 30px;
-    margin-top: 5px;
-    color: #e86113;
+  font-size: 30px;
+  margin-top: 5px;
+  color: #e86113;
 }
 .apple_content {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 .microsoft_content {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 .microsoft_content_text {
-    color: #FFF;
+  color: #fff;
 }
 .microsoft_content {
-    color: #FFF;
+  color: #fff;
 }
 .apple_text {
-    color: black;
+  color: black;
 }
 .store_apple {
-    color: black;
+  color: black;
 }
-
-
-
-
 
 .footer_icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 35px;
-    gap: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 35px;
+  gap: 30px;
 }
 .icon_flex {
-    display: flex;
-    align-items: center;
-    background-color: #efefef;
-    padding: 0 5px 0 5px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: .4s;
+  display: flex;
+  align-items: center;
+  background-color: #efefef;
+  padding: 0 5px 0 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s;
 }
 .icon_flex:hover {
-    transform: scale(1.07);
-    background-color: #e86113;
+  transform: scale(1.07);
+  background-color: #e86113;
 }
 .icons {
-    font-size: 25px;
-    color: black;
-    margin-top: 5px;
+  font-size: 25px;
+  color: black;
+  margin-top: 5px;
 }
 .share_num {
-    margin-left: 10px;
-    color: black;
+  margin-left: 10px;
+  color: black;
 }
 .pin_num {
-    margin-left: 10px;
-    color: black;
+  margin-left: 10px;
+  color: black;
 }
 .text {
-    margin-left: 5px;
-    color: black;
+  margin-left: 5px;
+  color: black;
 }
 .icon_partner {
-    color: #438ad0;
-    transition: .4s;
+  color: #438ad0;
+  transition: 0.4s;
 }
 .icon_partner:hover {
-    transform: scale(1.07);
-    color: #174574;
-    border-bottom: 1px solid #174574;
+  transform: scale(1.07);
+  color: #174574;
+  border-bottom: 1px solid #174574;
 }
-
-
-
-
 
 .version_block {
-    display: flex;
-    justify-content: center;
-    padding: 15px 0;
-    font-size: 20px;
-    margin-left: 30px;
-    gap: 60px;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  font-size: 20px;
+  margin-left: 30px;
+  gap: 60px;
 }
 .footer_email_text {
-    transition: .4s;
-    color: #438ad0;
+  transition: 0.4s;
+  color: #438ad0;
 }
 .footer_email_text:hover {
-    color: #174574;
-    border-bottom: 1px solid #174574;
+  color: #174574;
+  border-bottom: 1px solid #174574;
 }
 .footer_email {
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 15px;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 15px;
 }
 .footer_bottom_text {
-    text-align: center;
-    /* width: 950px; */
-    color: #707070;
-    font-size: 17px;
-    font-weight: 400;
+  text-align: center;
+  /* width: 950px; */
+  color: #707070;
+  font-size: 17px;
+  font-weight: 400;
 }
