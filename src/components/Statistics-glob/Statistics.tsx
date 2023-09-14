@@ -5,30 +5,13 @@ import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import style from "./Statistics.module.css";
 
 const Statistics = () => {
+  
   return (
     <div>
       <div className={style.statistics_container}>
         <div className={style.header_satatistics}>
-          <div className={style.header_user_info}>
-            <div className={style.user}>
-              <p className={style.icon_user}>
-                <FiUser />
-              </p>
-              <p>Личная</p>
-            </div>
-            <div className={style.users}>
-              <p className={style.icon_users}>
-                <FiUsers />
-              </p>
-              <p>Глобальная</p>
-            </div>
-          </div>
-          <div className={style.global_raiting}>
-            <h4 className={style.mode}>Участвовать в глобальном рейтинге</h4>
-            <div className={style.btn_green}>
-              <div className={style.switching}></div>
-            </div>
-          </div>
+        
+         
           <div className={style.global_statistics}>
             <div className={style.day_hour}>
               <button
@@ -74,7 +57,7 @@ const Statistics = () => {
                   backgroundColor: "white",
                 }}
               ></div>
-              <p style={{ padding: "5px" }}>Страница 1/29</p>
+              <p style={{ padding: "5px" }}>Страница 1/1</p>
               <div
                 style={{
                   height: "30px",
