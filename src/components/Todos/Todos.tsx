@@ -16,8 +16,8 @@ import {
 } from "../../features/todosSlice";
 
 const Todos = () => {
-  const todos = useSelector((state: RootState) => state.todos);
-  const categ = useSelector((state: RootState) => state.category);
+  const todos = useSelector((state: RootState) => state.todosReducer.todos);
+  const categ = useSelector((state: RootState) => state.todosReducer.category);
   // const error = useSelector((state: RootState) => state.error);
   const dispatch = useDispatch<AppDispatch>();
   const [category, setCategory] = useState("65007b007f366df54791f258");
@@ -68,21 +68,22 @@ const Todos = () => {
     <div className={style.todos_form}>
       <h4 className={style.title}>ЗАПЛАНИРОВАНО</h4>
       <div className={style.todos}>
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form className={style.form__add} onSubmit={(e) => handleSubmit(e)}>
           <select
             onChange={handleChange}
             placeholder="Категория"
             className={style.select}
             name=""
           >
+            
             {categ
               .map((item) => {
                 return (
-                  <>
-                    <option  value={item._id}>{item.category}</option>
-                  </>
-                );
-              })
+                  
+                  <option key={item._id} value={item._id}>{item.category}</option>
+                  
+                  );
+                })
               .reverse()}
           </select>
           <input
