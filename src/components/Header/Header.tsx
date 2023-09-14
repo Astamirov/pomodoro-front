@@ -14,8 +14,15 @@ import { RootState } from "../../app/store";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-
-  const token = useSelector((state: RootState) => state.signInSlice.token);
+const handleOpenOff = () => {
+  setOpen(false)
+}
+  //удаление токена
+const token = useSelector((state: RootState)=> state.signInSlice.token)
+const removeToken = () => {
+  localStorage.removeItem("token")
+  window.location.reload()
+}
   return (
     <header className={style.header}>
       <div className={style.header_content}>
@@ -74,12 +81,41 @@ const Header = () => {
                 </span>
                 Профиль
               </button>
-              {open ? <div className={style.state_profil}>{!token ? <div className={style.handle_user}>
-                <Link className={style.entrance_use} to='/login'><span className={style.icon}><HiOutlineLogin/></span>Вход</Link><Link className={style.authorization_user} to='/auth'><span className={style.icon}><ImExit/></span>Регестрация</Link>
-              </div>: <div className={style.profil}>
-                <button className={style.btn_profil}><span className={style.cg_profile}><CgProfile/></span>Профиль</button>
-                <button className={style.btn_exit}><span className={style.Im_exit}><ImExit/></span>Выход</button>
-                </div>}</div> : null}
+              {open ? (
+                <div className={style.state_profil}>
+                  {!token ? (
+                    <div className={style.handle_user}>
+                      <Link onClick={handleOpenOff} className={style.entrance_use} to="/login">
+                        <span className={style.icon}>
+                          <HiOutlineLogin />
+                        </span>
+                        Вход
+                      </Link>
+                      <Link onClick={handleOpenOff} className={style.authorization_user} to="/auth">
+                        <span className={style.icon}>
+                          <ImExit />
+                        </span>
+                        Регестрация
+                      </Link>
+                    </div>
+                  ) : (
+                    <div className={style.profil}>
+                      <button className={style.btn_profil} onClick={handleOpenOff}>
+                        <span className={style.cg_profile}>
+                          <CgProfile />
+                        </span>
+                        Профиль
+                      </button>
+                      <button className={style.btn_exit} onClick={removeToken}>
+                        <span className={style.Im_exit}>
+                          <ImExit />
+                        </span>
+                        Выход
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : null}
             </li>
           </ul>
         </nav>

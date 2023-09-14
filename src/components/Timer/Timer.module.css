@@ -1,18 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&family=Roboto:wght@400;700&display=swap');
 
 .app {
     text-align: center;
     background-color: #f6f3f3; 
     padding: 1rem;
-    
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
     color: #f6f3f3; 
     width: 970px;
     margin: 30px auto;
+    position: relative;
   }
-  
+  .font{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+
+  }
+  .text__timer{
+    position: absolute;
+    font-size: 13px;
+    bottom: 60px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
   .timer {
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: bold;
     margin: 1rem 0;
     animation: pulse 1s infinite;
@@ -23,13 +36,15 @@
     display: flex;
     gap: 1rem;
     justify-content: center;  
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   
   .button {
+    
     padding: 0.5rem 1.4rem; 
     font-size: 1.4rem; 
-    background-color: #1e1e1e47; 
+    width: 180px;
+    background-color: transparent; 
     color: #fff;
     border-color: #f6f3f3;
     border-radius: 5px;
@@ -38,7 +53,7 @@
   }
 
   .button:hover {
-    background-color: #1e1e1e63; 
+    background-color: #8c8a8a57; 
   }
 
   .iconsTop {

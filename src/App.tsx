@@ -10,28 +10,32 @@ import { Route, Routes } from "react-router-dom";
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 
+
 function App() {
   return (
     <>
 
+
+
       <Profille/>
       <Header />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Timer />
-              <Todos />
-              <Sliders />
-            </>
-          }
-        />
-        <Route path="/login" element={<SignIn />} />
-        <Route path="/auth" element={<SignUp />} />
-        <Route path="/statistics" element={<Statistics />} />
+        <Route path="/" element={
+          <>
+          <Header />
+          <Timer />
+          <Todos />
+          <Sliders />
+          <Footer />
+          </>
+        }/>
+  
+        <Route path="/login" element={<SignIn/>}/>
+        <Route path="/auth" element={<SignUp/>}/>
+        {/* <Statistics/> */}
       </Routes>
-      <Footer />
+
+
     </>
   );
 }
