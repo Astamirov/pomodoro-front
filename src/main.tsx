@@ -1,13 +1,20 @@
+
 import React, { Suspense } from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
 import './components/Header/Translation/18n'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import { Provider } from "react-redux";
+import { store } from "./app/store.js";
+import { BrowserRouter } from "react-router-dom";
 
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
-      <App />
-    </Suspense>
-  </React.StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById("root")!).render(
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
+);
+
