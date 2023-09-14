@@ -3,6 +3,9 @@ import style from "./Timer.module.css";
 import { BsGear, BsArrowRightCircleFill } from "react-icons/bs";
 import SettingsModal from "./SettingModal";
 import dingSound from "./sounds/zvonok.mp3";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 const padTime = (time: number) => {
   return time.toString().padStart(2, "0");
@@ -128,8 +131,15 @@ const Timer = () => {
   const timerStyle = {
     backgroundColor: isBreakTime ? "#388f38" : "#a94442",
   };
+//удаление токена
+const token = useSelector((state: RootState)=> state.signInSlice.token)
+  const removeToken = () => {
+    localStorage.removeItem("token")
+    window.location.reload()
+  }
 
   return (
+    
     <div className={style.app} style={timerStyle}>
       <div className={style.iconsTop}>
         <div className={style.settingsIcon} onClick={handleApplyBreakTime}>
@@ -139,7 +149,6 @@ const Timer = () => {
           <BsArrowRightCircleFill />
         </button>
       </div>
-
       <h1 className={style.title}>{title}</h1>
 
       <div className={style.timer}>

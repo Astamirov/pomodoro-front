@@ -22,7 +22,8 @@ a {
 .left_block {
     display: flex;
     align-items: center;
-    width: 210px;
+    height: 50px;
+    width: 230px;
     background-color: #efefef;
     padding: 5px 5px 5px 5px;
     border-radius: 10px;
@@ -31,7 +32,8 @@ a {
 .right_block {
     display: flex;
     align-items: center;
-    width: 210px;
+    height: 55px;
+    width: 230px;
     background-color: black;
     padding: 5px 5px 5px 15px;
     border-radius: 10px;
@@ -80,7 +82,8 @@ a {
     display: flex;
     align-items: center;
     background-color: #efefef;
-    padding: 5px;
+    padding: 0 5px 0 5px;
+    font-size: 14px;
     border-radius: 5px;
     cursor: pointer;
     transition: .4s;
@@ -96,19 +99,24 @@ a {
 }
 .share_num {
     margin-left: 10px;
+    color: black;
 }
 .pin_num {
     margin-left: 10px;
+    color: black;
 }
 .text {
     margin-left: 5px;
+    color: black;
 }
 .icon_partner {
+    color: #438ad0;
     transition: .4s;
 }
 .icon_partner:hover {
     transform: scale(1.07);
-    color: #e86113;
+    color: #174574;
+    border-bottom: 1px solid #174574;
 }
 
 
@@ -122,6 +130,14 @@ a {
     font-size: 20px;
     margin-left: 30px;
     gap: 60px;
+}
+.footer_email_text {
+    transition: .4s;
+    color: #438ad0;
+}
+.footer_email_text:hover {
+    color: #174574;
+    border-bottom: 1px solid #174574;
 }
 .footer_email {
     text-align: center;

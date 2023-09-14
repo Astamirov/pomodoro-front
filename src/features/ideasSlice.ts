@@ -1,5 +1,3 @@
-// ideasSlice.ts
-
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
 
@@ -7,11 +5,8 @@ import { RootState } from "../app/store";
 export type Comments = {
   _id: string;
   text: string;
+  author: string;
   error: string | null | unknown;
-  author: {
-    _id: string;
-    login: string;
-  };
   username: string | null;
 };
 
@@ -31,43 +26,49 @@ const initialState: StateApp = {
   userId: null,
 };
 
+export const loadComments = createAsyncThunk(
+  "ideas/loadComments",
+  // Здесь должен быть ваш запрос к серверу для загрузки комментариев
+  async (_, thunkAPI) => {
+    try {
+      const response = await fetch("http://localhost:3000/comments");
+      if (!response.ok) {
+        throw new Error("Failed to fetch comments");
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const postComment = createAsyncThunk<
-  Comment,
+  Comments,
   {
     commentText: string;
     author: { login: string };
   },
   { rejectValue: unknown; state: RootState }
->(
-  "ideas/postComment",
-  async ({ commentText, author }, thunkAPI) => {
-    const token = thunkAPI.getState().ideas.token;
+>("ideas/postComment", async ({ commentText, author }, thunkAPI) => {
+  const token = thunkAPI.getState().ideas.token;
+  try {
+    const response = await fetch(`http://localhost:3000/comments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ text: commentText, author: author }),
+    });
 
-    try {
-      const response = await fetch(
-        `http://localhost:4000/comments`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "ideas/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ text: commentText, author }),
-        }
-      );
+    const data = await response.json();
 
-      const data = await response.json();
-
-      if (data.success) {
-        return data.comment;
-      } else {
-        return thunkAPI.rejectWithValue(data.error);
-      }
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
+    return thunkAPI.fulfillWithValue(data);
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
   }
-);
+});
 
 export const removeComment = createAsyncThunk<
   string,
@@ -77,21 +78,24 @@ export const removeComment = createAsyncThunk<
   const token = thunkAPI.getState().ideas.token;
   try {
     const res = await fetch(
-      `http://localhost:4000/deleteComment/${commentId}`,
+        `http://localhost:3000/deleteComment/${commentId}`,
       {
         method: "DELETE",
         headers: {
-          "Content-Type": "ideas/json",
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       }
     );
+    console.log(res)
     if (res.ok) {
+        console.log('ok')
       return commentId;
     }
+    
     const comment = await res.json();
     return thunkAPI.rejectWithValue(comment);
-  } catch (error) {
+  } catch (error) {console.log('osk')
     return thunkAPI.rejectWithValue((error as Error).message);
   }
 });
@@ -106,6 +110,12 @@ const ideasSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(loadComments.fulfilled, (state, action) => {
+        state.comments = action.payload;
+      })
+      .addCase(loadComments.rejected, (state, action) => {
+        state.error = action.payload;
+      })
       .addCase(postComment.fulfilled, (state, action) => {
         state.username = action.meta.arg.author.login;
       })
@@ -114,8 +124,10 @@ const ideasSlice = createSlice({
       })
       .addCase(removeComment.fulfilled, (state, action) => {
         const commentId = action.payload;
-    
-        state.comments = state.comments.filter((item) => item._id !== commentId);
+
+        state.comments = state.comments.filter(
+          (item) => item._id !== commentId
+        );
 
         state.error = null;
       })
@@ -124,8 +136,7 @@ const ideasSlice = createSlice({
         (state, action: PayloadAction<string | unknown>) => {
           state.error = action.payload;
         }
-      )
-      
+      );
   },
 });
 

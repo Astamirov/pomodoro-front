@@ -22,57 +22,95 @@
     border-bottom: 2px solid #b0feed;
 }
 
-.todos__ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .comment {
-    background-color: #fff;
+.todos {
+    margin: 30px 0;
+}
+
+
+.commentSection {
+    padding: 30px 5px;
+}
+
+.com__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.inputCom {
+    width: 60%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.addComBtn {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.addComBtn:hover {
+    background-color: #0056b3;
+}
+
+.comment {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 10px;
+    padding-right: 50px;
+    background-color: #313131;
+    border-top: 1px solid #807f7f;
+    position: relative;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.comment p {
+    margin: 0;
+    padding-left: 4px;
+    word-break: break-all;
+}
+
+.comment__inner {
     display: flex;
     justify-content: space-between;
+    word-break: break-word;
+}
+
+.removeBtnComment {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 37px;
+    
+}
+
+.comment__user {
     align-items: center;
-  }
-  
-  .comment span {
-    flex-grow: 1;
-    margin-right: 10px;
-  }
-  
-  .comment button {
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .comment button:hover {
-    background-color: #c0392b;
-  }
-  
-  .input[type="text"] {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  .button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
+    margin-right: 15px;
+    text-align: center;
+}
+
+
+.user__avatar {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    align-items: center;
+    padding-top: 13px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}

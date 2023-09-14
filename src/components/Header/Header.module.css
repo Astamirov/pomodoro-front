@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+.header_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f4d7a;
+    padding: 13px 30px;
+}
+.header_logo {
+    font-size: 20px;
+    color: rgb(201, 54, 9);
+}
+.content_h1 {
+    display: flex;
+    align-items: center;
+}
+.a_logo {
+    font-size: 20px;
+    color: #FFF;
+    margin-left: 7px;
+    margin-top: -3px;
+}
+.header_ul {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+.header_link {
+    color: #FFF;
+}
+.statistics {
+    display: flex;
+    align-items: center;
+}
+.header_launguage {
+    display: flex;
+    align-items: center;
+}
+.header_stat {
+    font-size: 20px;
+    color: #FFF;
+    display: flex;
+    margin-right: 7px;
+}
+.header_settings {
+    font-size: 20px;
+    color: #FFF;
+    display: flex;
+    margin-right: 7px;
+}
+.header_ideas {
+    font-size: 20px;
+    color: #FFF;
+    display: flex;
+    margin-right: 7px;
+}
+.header_world {
+    font-size: 20px;
+    color: #FFF;
+    display: flex;
+}
+.header_laung {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #FFF;
+    font-size: 16px;
+}
+.header_user_login {
+    font-size: 20px;
+    color: #FFF;
+    display: flex;
+    margin-right: 7px;
+}

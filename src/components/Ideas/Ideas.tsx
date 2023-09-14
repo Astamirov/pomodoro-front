@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { postComment, removeComment } from "../../features/ideasSlice";
+import {
+  loadComments,
+  postComment,
+  removeComment,
+} from "../../features/ideasSlice";
 import style from "./Ideas.module.css";
 import stringHash from "string-hash";
 import { Link } from "react-router-dom";
@@ -10,7 +14,9 @@ const Ideas = () => {
   const [commentText, setCommentText] = useState("");
   const comments = useSelector((state: RootState) => state.ideas.comments);
   const dispatch = useDispatch<AppDispatch>();
-  const userLogin = useSelector((state: RootState) => state.auth.user.login);
+  const userLogin = useSelector(
+    (state: RootState) => state.signInSlice.user.login
+  );
   const token = useSelector((state: RootState) => state.ideas.token);
 
   const handleCommentSubmit = async () => {
@@ -22,10 +28,9 @@ const Ideas = () => {
     dispatch(removeComment({ commentId }));
   };
 
-  // useEffect(() => {
-  //     dispatch();
-
-  //   }, [ dispatch]);
+  useEffect(() => {
+    dispatch(loadComments());
+  }, [dispatch, commentText, token]);
 
   return (
     <div className={style.ideas}>
