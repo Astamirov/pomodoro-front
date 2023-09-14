@@ -79,29 +79,29 @@ const Footer = () => {
           <div className={style.footer_version}>
             <div className={style.version_block}>
               <div>
-                <a className={style.icon_partner} href="">
+                <a className={style.icon_partner} href="#">
                   Version 22.0.4
                 </a>
               </div>
               <div>
-                <a className={style.icon_partner} href="">
+                <a className={style.icon_partner} href="#">
                   Privacy Policy
                 </a>
               </div>
               <div>
-                <a className={style.icon_partner} href="">
+                <a className={style.icon_partner} href="#">
                   Terms and Conditions
                 </a>
               </div>
               <div>
-                <a className={style.icon_partner} href="">
+                <a className={style.icon_partner} href="#">
                   Slack Community
                 </a>
               </div>
             </div>
             <div className={style.footer_email}>
-              <a className={style.footer_email_text} href="">
-                horneds@gmail.com <span></span>2015
+              <a className={style.footer_email_text} href="#">
+                intocode@gmail.com <span></span>2023
               </a>
             </div>
             <div className={style.footer_bottom_text}>
