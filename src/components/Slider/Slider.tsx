@@ -3,98 +3,88 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import style from './Slider.module.css'
+import { useTranslation } from "react-i18next";
+
 
 const Sliders = () => {
+  const { t, i18n } = useTranslation();
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-      };
-    
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
+
   return (
     <div className={style.slider}>
       <Slider {...settings}>
         <div className={style.two}>
-          <h1 className={style.first_h1}>What is it?</h1>
+          <h1 className={style.first_h1}>{t("what")}</h1>
           <p className={style.description_pomodoro}>
-            The Pomodoro Technique is a time management method that can be used
-            for any task. For many people, time is an enemy. The anxiety
-            triggered by “the ticking clock”, especially when it involves a
-            deadline, leads to ineffective work and study habits which in turn
-            lead to procrastination.
+            {t("the")}
           </p>
           <p className={style.documentiteon_pomodoro}>
-            The aim of the Pomodoro Technique is to use time as a valuable ally
-            in accomplishing what we want to do in the way we want to do it, and
-            to enable us to improve continually the way we work or study.
+            {t("aim")}
           </p>
         </div>
         <div className={style.block_two}>
-          <h1 className={style.h3}>The Goals</h1>
+          <h1 className={style.h3}>{t("goals")}</h1>
           <p className={style.Goals_pomodoro}>
-            The Pomodoro Technique will provide a simple tool/process for
-            improving productivity (your own and that of your team members)
-            which can do the following:
+            {t("will")}
           </p>
           <ul className={style.ul_pomodoro}>
-            <li>Alleviate anxiety linked to beginning</li>
+            <li>{t("linked")}</li>
             <li>
-              Enhance focus and concentration by cutting down on interruptions
+              {t("focus")}
             </li>
-            <li>Increase awareness of your decisions</li>
-            <li>Boost motivation and keep it constant</li>
-            <li>Bolster the determination to achieve your goals</li>
+            <li>{t("incr")}</li>
+            <li>{t("boost")}</li>
+            <li>{t("your")}</li>
             <li>
-              Refine the estimation process, both in qualitative and
-              quantitative terms
+              {t("refine")}
             </li>
-            <li>Improve your work or study process</li>
+            <li>{t("improve")}</li>
             <li>
-              Strengthen your resolve to keep on applying yourself in the face
-              of complex situations
+              {t("keep")}
             </li>
           </ul>
         </div>
         <div className={style.block_three}>
-          <h1 className={style.h2}>The Basics</h1>
+          <h1 className={style.h2}>{t("basics")}</h1>
           <p className={style.description}>
-            At the beginning of each day select the tasks you need to complete
-            and put them on the TODO list above.
+            {t("at")}
           </p>
-          <p className={style.start_work}>Start working:</p>
+          <p className={style.start_work}>{t("working")}</p>
           <div className={style.task_block}>
-            <div>1. Start the Pomodoro timer</div>
-            <div>2. Work until the Pomodoro rings</div>
-            <div>3. Take a short break (3-5 minutes)</div>
+            <div>{t("timer")}</div>
+            <div>{t("work")}</div>
+            <div>{t("take")}</div>
           </div>
           <p className={style.text_timer}>
-            Keep on working, Pomodoro after Pomodoro, until the task at hand is
-            finished. Every 4 Pomodoros take a longer break, (15–30 minutes).
+          {t("after")}
           </p>
         </div>
         <div className={style.block4}>
-          <h1 className={style.last_h3}>Rules & Tips</h1>
+          <h1 className={style.last_h3}>{t("rules")}</h1>
           <ul>
-            <li>If a task takes more than 5–7 Pomodoros, break it down</li>
+            <li>{t("task")}</li>
             <li>
-              If it takes less than one Pomodoro, add it up, and combine it with
-              another task
+            {t("less")}
             </li>
-            <li>Once a Pomodoro begins, it has to ring</li>
-            <li>The next Pomodoro will go better</li>
-            <li>Login to the service and track your progress</li>
+            <li>{t("once")}</li>
+            <li>{t("next")}</li>
+            <li>{t("login")}</li>
             <li>
-              The Pomodoro Technique shouldn’t be used for activities you do in
-              your free time. Enjoy free time!
+            {t("used")}
             </li>
           </ul>
         </div>
-      </Slider>   
+      </Slider>
     </div>
   )
 }

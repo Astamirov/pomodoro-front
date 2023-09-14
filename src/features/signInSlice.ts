@@ -7,23 +7,25 @@ type User = {
   password: string;
 };
 
-type stateApp = {
-  user: User;
-  error: null | string | unknown;
-  signIn: boolean;
-  token: string | null;
-};
-
-const initialState: stateApp = {
-  user: {
+  
+  type stateApp = {
+    user: User;
+    error: null | string | unknown;
+    signIn: Boolean;
+    token: String | null;
+  };
+  
+  const initialState: stateApp = {
+    user: {
     _id: "",
     login: "",
     password: "",
   },
-  error: null,
-  signIn: false,
-  token: localStorage.getItem("token"),
-};
+    error: null,
+    signIn: false,
+    token: localStorage.getItem("token"),
+  };
+
 
 export const authSignIn = createAsyncThunk<
   string,
