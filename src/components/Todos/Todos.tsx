@@ -14,7 +14,7 @@ import {
   updateCompleted,
   removeTodo,
 } from "../../features/todosSlice";
-import { BiColor } from "react-icons/bi";
+
 
 const Todos = () => {
   const todos = useSelector((state: RootState) => state.todosReducer.todos);
