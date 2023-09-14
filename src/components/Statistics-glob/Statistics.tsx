@@ -1,6 +1,5 @@
-import React from "react";
-import { useState } from "react";
-import { FiUser, FiUsers } from "react-icons/fi";
+
+import { FiUser} from "react-icons/fi";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import style from "./Statistics.module.css";
 
