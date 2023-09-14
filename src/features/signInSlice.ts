@@ -2,24 +2,30 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
 
 type User = {
-    _id: string;
-    login: string;
-    password: string;
-  };
+  _id: string;
+  login: string;
+  password: string;
+};
+
   
   type stateApp = {
-    user: User[];
+    user: User;
     error: null | string | unknown;
     signIn: Boolean;
     token: String | null;
   };
   
   const initialState: stateApp = {
-    user: [],
+    user: {
+    _id: "",
+    login: "",
+    password: "",
+  },
     error: null,
     signIn: false,
     token: localStorage.getItem("token"),
   };
+
 
 export const authSignIn = createAsyncThunk<
   string,
@@ -46,23 +52,25 @@ export const authSignIn = createAsyncThunk<
 });
 
 const singInSlice = createSlice({
-    name: "application",
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-      builder
-        .addCase(authSignIn.pending, (state) => {
-          (state.signIn = true), (state.error = null);
-        })
-        .addCase(authSignIn.rejected, (state, action) => {
-          (state.error = action.payload), (state.signIn = false);
-        })
-        .addCase(authSignIn.fulfilled, (state, action) => {
-          (state.signIn = false),
-            (state.error = null),
-            (state.token = action.payload);
-        });
-    },
-  });
-  
-  export default singInSlice.reducer;
+  name: "application",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(authSignIn.pending, (state) => {
+        (state.signIn = true), (state.error = null);
+      })
+      .addCase(authSignIn.rejected, (state, action) => {
+        (state.error = action.payload), (state.signIn = false);
+      })
+      .addCase(authSignIn.fulfilled, (state, action) => {
+        (state.signIn = false),
+        (state.error = null),
+        (state.token = action.payload);
+        state.user.login = action.meta.arg.login;
+        state.user._id = action.meta.arg._id;
+      });
+  },
+});
+
+export default singInSlice.reducer;
