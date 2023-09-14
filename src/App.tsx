@@ -22,17 +22,13 @@ function App() {
       <Routes>
         <Route path="/" element={
           <>
-
-          
-          {/* <Timer /> */}
+           <Timer />
           <Ideas />
-          {/* <Todos />
-
+           <Todos />
           <Timer />
           <Todos />
-
           <Sliders />
-          <Footer /> */}
+          <Footer /> 
           </>
         }/>
         <Route path="/prof" element={<Profille/>}/>
