@@ -1,4 +1,4 @@
-
+import './components/Header/18n.js'
 import React, { Suspense } from 'react'
 import './components/Header/Translation/18n'
 import ReactDOM from "react-dom/client";

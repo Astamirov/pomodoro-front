@@ -5,6 +5,8 @@ import SettingsModal from "./SettingModal";
 import dingSound from "./sounds/zvonok.mp3";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
+import { useTranslation } from 'react-i18next';
+
 
 const padTime = (time: number) => {
   return time.toString().padStart(2, "0");
@@ -20,6 +22,7 @@ const Timer = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [isBreakTime, setIsBreakTime] = useState(false);
   const audioRef = useRef(new Audio(dingSound));
+  const { t, i18n } = useTranslation();
 
   const todos = useSelector((state: RootState) => state.todosReducer.todos);
 
@@ -28,6 +31,7 @@ const Timer = () => {
   };
 
   const resetTimer = useCallback(() => {
+
     if (intervalRef.current !== null) {
       clearInterval(intervalRef.current);
       setIsRunning(false);
@@ -64,6 +68,7 @@ const Timer = () => {
 
   useEffect(() => {
     if (mainTime === 0 && !isBreakTime) {
+
       setIsBreakTime(true);
       startTimer();
     } else if (breakTime === 0 && isBreakTime) {
@@ -73,6 +78,7 @@ const Timer = () => {
       setIsBreakTime(true);
       setMainTime(initialMainTime);
     } else if (breakTime < 0 && isBreakTime) {
+
       setIsBreakTime(false);
       setBreakTime(initialBreakTime);
     }
@@ -146,21 +152,21 @@ const Timer = () => {
       <div className={style.buttons}>
         {!isRunning && (
           <button className={style.button} onClick={startTimer}>
-            Start
+           <div>{t("start")}</div> 
           </button>
         )}
         {isRunning ? (
           <button className={style.button} onClick={stopTimer}>
-            Pause
+            {t("stop")}
           </button>
         ) : (
           <button className={style.button} onClick={handleStop}>
-            {isBreakTime ? "Пропустить" : "Stop"}
+            {isBreakTime ? <div>{t("skip")}</div> : <div>{t("stop")}</div> }
           </button>
         )}
         {isRunning && (
           <button className={style.button} onClick={handleSkip}>
-            Сделано
+            {t("made")}
           </button>
         )}
       </div>

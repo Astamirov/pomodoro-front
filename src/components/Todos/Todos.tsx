@@ -14,6 +14,9 @@ import {
   updateCompleted,
   removeTodo,
 } from "../../features/todosSlice";
+import { useTranslation } from "react-i18next";
+
+
 
 
 const Todos = () => {
@@ -23,13 +26,14 @@ const Todos = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [category, setCategory] = useState("65007b007f366df54791f258");
   const [text, setText] = useState("");
-  
+
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     dispatch(fetchTodo());
     dispatch(fetchCateg());
     dispatch(updateCount());
-  }, []);
+  }, [dispatch]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -72,7 +76,7 @@ const Todos = () => {
         <form className={style.form__add} onSubmit={(e) => handleSubmit(e)}>
           <select
             onChange={handleChange}
-            placeholder="Категория"
+            placeholder={t('category')}
             className={style.select}
             name=""
           >
@@ -91,7 +95,7 @@ const Todos = () => {
             value={text}
             onChange={handleChangeText}
             className={style.input}
-            placeholder="Короткое описание"
+            placeholder={t('description')}
             type="text"
           />
           <button title="Добавить" className={style.add}>
@@ -146,10 +150,10 @@ const Todos = () => {
             <a className={style.icon__list} href="#">
               <FaClipboardList />
             </a>
-            Список планирования пуст.
+        {t("todo")}.
           </span>
           <br />
-          Попробуйте добавить задачи используя форму выше.
+          {t("try")}
         </p> : null}
     
       </div>
