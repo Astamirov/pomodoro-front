@@ -1,21 +1,45 @@
-
 import { NavLink, Link } from "react-router-dom";
 import style from "./Header.module.css";
+import { useState } from "react";
 import { BsCheckCircleFill, BsChat } from "react-icons/bs";
 import { FcStatistics } from "react-icons/fc";
 import { LuSettings } from "react-icons/lu";
 import { BiWorld } from "react-icons/bi";
+import { CgProfile } from "react-icons/cg";
 import { FaUserCircle } from "react-icons/fa";
+import { ImExit } from "react-icons/im";
+import { HiOutlineLogin } from "react-icons/hi";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 
 const Header = () => {
-  const { t, i18n } = useTranslation();
-  const [open, setOpen] = useState(false);
-  const [russ, setRuss] = useState(false)
+  
   
 
-  function handleClickOnButton() {
+  
+
+
+
+
+const Header = () => {
+const { t, i18n } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const [russ, setRuss] = useState(false)
+  const [open, setOpen] = useState(false);
+const handleOpenOff = () => {
+  setOpen(false)
+}
+
+const token = useSelector((state: RootState)=> state.signInSlice.token)
+const removeToken = () => {
+  localStorage.removeItem("token")
+  window.location.reload()
+}
+
+function handleClickOnButton() {
     setOpen(!open)
   }
   const changeLanguage = (language: string) => {
@@ -32,20 +56,24 @@ const Header = () => {
     i18n.changeLanguage(language);
   }
 
+
   return (
     <header className={style.header}>
       <div className={style.header_content}>
-        <Link to='/'>
+        <Link to="/">
           <h3 className={style.content_h1}>
             <a className={style.header_logo} href="">
               <BsCheckCircleFill />
             </a>
-            <a className={style.a_logo} href="">Pomodoro Tracker</a>
+            <a className={style.a_logo} href="">
+              Pomodoro Tracker
+            </a>
           </h3>
         </Link>
         <nav>
           <ul className={style.header_ul}>
             <li className={style.statistics}>
+
               <a className={style.header_stat} href=""><FcStatistics /></a>
               <Link className={style.header_link} to={"/statistics"}>{t("statistics")}</Link>
             </li>
@@ -68,6 +96,10 @@ const Header = () => {
               <a className={style.header_user_login} href=""><FaUserCircle /></a>
               <Link className={style.header_link} to={'/login'}>{t("registration")}</Link>
             </li>
+
+              
+            
+           
           </ul>
         </nav>
       </div>

@@ -1,7 +1,6 @@
-
-
 import Header from "./components/Header/Header";
-// import Statistics from "./components/Statistics-glob/Statistics";
+import Profille from './components/Profille/Profille';
+import Statistics from "./components/Statistics-glob/Statistics";
 import Timer from "./components/Timer/Timer";
 import Todos from "./components/Todos/Todos";
 import Footer from "./components/Footer/Footer";
@@ -15,9 +14,8 @@ import SignUp from "./components/SignUp/SignUp";
 function App() {
   return (
     <>
-
-      
-
+      <Profille/>
+      <Header />
       <Routes>
         <Route path="/" element={
           <>

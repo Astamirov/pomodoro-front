@@ -3,7 +3,6 @@ import style from "./Timer.module.css";
 import { BsGear, BsArrowRightCircleFill } from "react-icons/bs";
 import SettingsModal from "./SettingModal";
 import dingSound from "./sounds/zvonok.mp3";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { useTranslation } from 'react-i18next';
@@ -18,7 +17,6 @@ const Timer = () => {
   const [breakTime, setBreakTime] = useState<number>(5 * 60);
   const [initialMainTime, setInitialMainTime] = useState<number>(mainTime);
   const [initialBreakTime, setInitialBreakTime] = useState<number>(breakTime);
-  const [title, setTitle] = useState<string>("Пусть начнется обратный отсчет!");
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const intervalRef = useRef<number | null>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
@@ -26,12 +24,14 @@ const Timer = () => {
   const audioRef = useRef(new Audio(dingSound));
   const { t, i18n } = useTranslation();
 
+  const todos = useSelector((state: RootState) => state.todosReducer.todos);
+
   const handleApplyBreakTime = () => {
     setIsSettingsOpen(true);
   };
 
   const resetTimer = useCallback(() => {
-    setTitle("Готов к следующему раунду!");
+
     if (intervalRef.current !== null) {
       clearInterval(intervalRef.current);
       setIsRunning(false);
@@ -68,19 +68,17 @@ const Timer = () => {
 
   useEffect(() => {
     if (mainTime === 0 && !isBreakTime) {
-      setTitle("Перерыв");
+
       setIsBreakTime(true);
       startTimer();
     } else if (breakTime === 0 && isBreakTime) {
-      setTitle("Пусть  обратный отсчет!");
       setIsBreakTime(false);
       startTimer();
     } else if (mainTime < 0 && !isBreakTime) {
-      setTitle("Перерыв");
       setIsBreakTime(true);
       setMainTime(initialMainTime);
     } else if (breakTime < 0 && isBreakTime) {
-      setTitle("Пусть начнется обратный отсчет!");
+
       setIsBreakTime(false);
       setBreakTime(initialBreakTime);
     }
@@ -89,9 +87,9 @@ const Timer = () => {
   const startTimer = () => {
     if (intervalRef.current !== null) {
       clearInterval(intervalRef.current);
-    }   
+    }
     setIsRunning(true);
-  
+
     intervalRef.current = setInterval(() => {
       if (isBreakTime && breakTime > 0) {
         setBreakTime((prevBreakTime) => prevBreakTime - 1);
@@ -106,7 +104,6 @@ const Timer = () => {
   const stopTimer = () => {
     if (intervalRef.current === null) return;
 
-    setTitle("Продолжай!");
     setIsRunning(false);
 
     clearInterval(intervalRef.current);
@@ -118,10 +115,8 @@ const Timer = () => {
       setIsBreakTime((prevState) => !prevState);
       if (!isBreakTime) {
         setMainTime(initialBreakTime);
-        setTitle("Перерыв");
       } else {
         setMainTime(initialMainTime);
-        setTitle("Рабочее время");
       }
     }
   };
@@ -134,15 +129,8 @@ const Timer = () => {
   const timerStyle = {
     backgroundColor: isBreakTime ? "#388f38" : "#a94442",
   };
-//удаление токена
-const token = useSelector((state: RootState)=> state.signInSlice.token)
-  const removeToken = () => {
-    localStorage.removeItem("token")
-    window.location.reload()
-  }
 
   return (
-    
     <div className={style.app} style={timerStyle}>
       <div className={style.iconsTop}>
         <div className={style.settingsIcon} onClick={handleApplyBreakTime}>
@@ -152,14 +140,15 @@ const token = useSelector((state: RootState)=> state.signInSlice.token)
           <BsArrowRightCircleFill />
         </button>
       </div>
-      <h1 className={style.title}>{title}</h1>
 
       <div className={style.timer}>
-        <span>{minutes}</span>
-        <span>:</span>
-        <span>{seconds}</span>
+        <span className={style.font}>{minutes}</span>
+        <span className={style.font}>:</span>
+        <span className={style.font}>{seconds}</span>
       </div>
-
+      <h6 className={style.text__timer}>
+        {todos.length !== 0 ? todos[todos.length - 1].text : null}
+      </h6>
       <div className={style.buttons}>
         {!isRunning && (
           <button className={style.button} onClick={startTimer}>

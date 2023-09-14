@@ -18,6 +18,7 @@ import { useTranslation } from "react-i18next";
 
 
 
+
 const Todos = () => {
   const todos = useSelector((state: RootState) => state.todosReducer.todos);
   const categ = useSelector((state: RootState) => state.todosReducer.category);
@@ -25,9 +26,8 @@ const Todos = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [category, setCategory] = useState("65007b007f366df54791f258");
   const [text, setText] = useState("");
-  const [count, setCount] = useState(1);
-  const { t, i18n } = useTranslation();
 
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     dispatch(fetchTodo());
@@ -71,7 +71,7 @@ const Todos = () => {
 
   return (
     <div className={style.todos_form}>
-      <h4 className={style.title}>{t("planned")}</h4>
+      <h4 className={style.title}>ЗАПЛАНИРОВАНО {todos.length > 0 ? todos.length : null}</h4>
       <div className={style.todos}>
         <form className={style.form__add} onSubmit={(e) => handleSubmit(e)}>
           <select
@@ -134,7 +134,7 @@ const Todos = () => {
                 {todo.completed ? (
                   <div className={style.setting__todo}>
                     <button onClick={() => handleCount(todo._id)}><FaPlus /> Добавить</button>
-                    <button onClick={() => handleCountInc(todo._id)}><FaMinus /> Убрать один</button>
+                    <button disabled={todo.count === 1}onClick={() => handleCountInc(todo._id)}><FaMinus /> Убрать один</button>
                     <hr />
                     <button><MdOutlineDoneOutline/> Указать как выполнено</button>
                     <button onClick={()=> handalRemove(todo._id)}><AiTwotoneDelete/> Удалить</button>
