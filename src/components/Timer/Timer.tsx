@@ -22,8 +22,6 @@ const Timer = () => {
   const audioRef = useRef(new Audio(dingSound));
 
   const todos = useSelector((state: RootState) => state.todosReducer.todos);
-  
-
 
   const handleApplyBreakTime = () => {
     setIsSettingsOpen(true);
@@ -83,9 +81,9 @@ const Timer = () => {
   const startTimer = () => {
     if (intervalRef.current !== null) {
       clearInterval(intervalRef.current);
-    }   
+    }
     setIsRunning(true);
-  
+
     intervalRef.current = setInterval(() => {
       if (isBreakTime && breakTime > 0) {
         setBreakTime((prevBreakTime) => prevBreakTime - 1);
@@ -126,9 +124,7 @@ const Timer = () => {
     backgroundColor: isBreakTime ? "#388f38" : "#a94442",
   };
 
-
   return (
-    
     <div className={style.app} style={timerStyle}>
       <div className={style.iconsTop}>
         <div className={style.settingsIcon} onClick={handleApplyBreakTime}>
@@ -144,7 +140,9 @@ const Timer = () => {
         <span className={style.font}>:</span>
         <span className={style.font}>{seconds}</span>
       </div>
-<h6 className={style.text__timer}>{todos.length !== 0 ? todos[todos.length-1].text : null}</h6>
+      <h6 className={style.text__timer}>
+        {todos.length !== 0 ? todos[todos.length - 1].text : null}
+      </h6>
       <div className={style.buttons}>
         {!isRunning && (
           <button className={style.button} onClick={startTimer}>
