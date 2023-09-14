@@ -82,3 +82,25 @@ a {
     display: flex;
     margin-right: 7px;
 }
+.language1 button{
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    border: none;
+    color: #FFF;
+}
+
+.lang_block{
+    position: relative;
+    background-color: transparent;
+    border: none;
+    color: #FFF;
+}
+.language1{
+    position: absolute;
+    top: 55px;
+    right: 160px;
+    width: 150px;
+    background:#1f4d7a;
+    padding: 5px;
+}

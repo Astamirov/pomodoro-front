@@ -6,6 +6,8 @@ import dingSound from "./sounds/zvonok.mp3";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
+import { useTranslation } from 'react-i18next';
+
 
 const padTime = (time: number) => {
   return time.toString().padStart(2, "0");
@@ -16,19 +18,20 @@ const Timer = () => {
   const [breakTime, setBreakTime] = useState<number>(5 * 60);
   const [initialMainTime, setInitialMainTime] = useState<number>(mainTime);
   const [initialBreakTime, setInitialBreakTime] = useState<number>(breakTime);
-  const [title, setTitle] = useState<string>("Let the countdown begin!");
+  const [title, setTitle] = useState<string>("Пусть начнется обратный отсчет!");
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const intervalRef = useRef<number | null>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [isBreakTime, setIsBreakTime] = useState(false);
   const audioRef = useRef(new Audio(dingSound));
+  const { t, i18n } = useTranslation();
 
   const handleApplyBreakTime = () => {
     setIsSettingsOpen(true);
   };
 
   const resetTimer = useCallback(() => {
-    setTitle("Ready for another round!");
+    setTitle("Готов к следующему раунду!");
     if (intervalRef.current !== null) {
       clearInterval(intervalRef.current);
       setIsRunning(false);
@@ -65,19 +68,19 @@ const Timer = () => {
 
   useEffect(() => {
     if (mainTime === 0 && !isBreakTime) {
-      setTitle("Break");
+      setTitle("Перерыв");
       setIsBreakTime(true);
       startTimer();
     } else if (breakTime === 0 && isBreakTime) {
-      setTitle("Let the countdown begin!");
+      setTitle("Пусть  обратный отсчет!");
       setIsBreakTime(false);
       startTimer();
     } else if (mainTime < 0 && !isBreakTime) {
-      setTitle("Break");
+      setTitle("Перерыв");
       setIsBreakTime(true);
       setMainTime(initialMainTime);
     } else if (breakTime < 0 && isBreakTime) {
-      setTitle("Let the countdown begin!");
+      setTitle("Пусть начнется обратный отсчет!");
       setIsBreakTime(false);
       setBreakTime(initialBreakTime);
     }
@@ -103,7 +106,7 @@ const Timer = () => {
   const stopTimer = () => {
     if (intervalRef.current === null) return;
 
-    setTitle("Keep it going!");
+    setTitle("Продолжай!");
     setIsRunning(false);
 
     clearInterval(intervalRef.current);
@@ -115,10 +118,10 @@ const Timer = () => {
       setIsBreakTime((prevState) => !prevState);
       if (!isBreakTime) {
         setMainTime(initialBreakTime);
-        setTitle("Break Time");
+        setTitle("Перерыв");
       } else {
         setMainTime(initialMainTime);
-        setTitle("Work Time");
+        setTitle("Рабочее время");
       }
     }
   };
@@ -160,21 +163,21 @@ const token = useSelector((state: RootState)=> state.signInSlice.token)
       <div className={style.buttons}>
         {!isRunning && (
           <button className={style.button} onClick={startTimer}>
-            Start
+           <div>{t("start")}</div> 
           </button>
         )}
         {isRunning ? (
           <button className={style.button} onClick={stopTimer}>
-            Pause
+            {t("stop")}
           </button>
         ) : (
           <button className={style.button} onClick={handleStop}>
-            {isBreakTime ? "Пропустить" : "Stop"}
+            {isBreakTime ? <div>{t("skip")}</div> : <div>{t("stop")}</div> }
           </button>
         )}
         {isRunning && (
           <button className={style.button} onClick={handleSkip}>
-            Сделано
+            {t("made")}
           </button>
         )}
       </div>

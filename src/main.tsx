@@ -1,6 +1,6 @@
 
-import React, { Suspense } from 'react'
-import './components/Header/Translation/18n'
+// import React from 'react'
+import './components/Header/18n.js'
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
@@ -10,6 +10,7 @@ import { BrowserRouter } from "react-router-dom";
 
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <App />

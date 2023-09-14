@@ -1,5 +1,4 @@
 
-// import Language from './components/Header/Translation/Language'
 
 import Header from "./components/Header/Header";
 // import Statistics from "./components/Statistics-glob/Statistics";
@@ -17,7 +16,7 @@ function App() {
   return (
     <>
 
-      {/* <Language /> */}
+      
 
       <Routes>
         <Route path="/" element={
