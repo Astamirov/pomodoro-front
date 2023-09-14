@@ -1,8 +1,8 @@
 import {configureStore} from "@reduxjs/toolkit"
 import todosReducer from "../features/todosSlice"
 import signInSlice from "../features/signInSlice"
-import signUpSlice from "../features/signInSlice"
-import usersSlice from "../features/signInSlice"
+import signUpSlice from "../features/singUpSlice"
+import usersSlice from "../features/usersSlice"
 
 const reducer = {
     todosReducer,

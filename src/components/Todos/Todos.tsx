@@ -26,8 +26,8 @@ const Todos = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [category, setCategory] = useState("65007b007f366df54791f258");
   const [text, setText] = useState("");
-
-  const { t, i18n } = useTranslation();
+  
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(fetchTodo());
