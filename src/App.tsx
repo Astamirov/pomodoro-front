@@ -1,23 +1,22 @@
-
-import Todos from './components/Todos/Todos';
-import Footer from './components/Footer/Footer';
-import Sliders from './components/Slider/Slider';;
-import './App.css'
-// import Statistics from './components/Statistics-glob/Statistics';
-import Timer from './components/Timer/Timer'
-
+import Header from "./components/Header/Header";
+import Todos from "./components/Todos/Todos";
+import Footer from "./components/Footer/Footer";
+import Sliders from "./components/Slider/Slider";
+// import Statistics from "./components/Statistics-glob/Statistics";
+import Timer from "./components/Timer/Timer";
+import "./App.css";
 
 function App() {
-
   return (
     <>
-      {/* <Statistics/> */}
+      <Header />
+      {/* <Statistics /> */}
       <Timer />
-      <Todos/>
-      <Sliders/>
-      <Footer/>
+      <Todos />
+      <Sliders />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
