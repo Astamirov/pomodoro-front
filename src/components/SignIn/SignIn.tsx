@@ -24,8 +24,8 @@ const SignIn = () => {
   const handleSingUp = (e: FormEvent) => {
     e.preventDefault();
     dispatch(authSignIn({ _id: "", login, password }));
-
   };
+
   if (token) {
     navigate("/");
   }

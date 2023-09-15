@@ -148,3 +148,12 @@
     color: #fff;
     outline: none; /* Убираем стандартное браузерное подчеркивание при фокусе */
   }
+
+  .tokenError {
+     padding: 30px 10px;
+     text-align: center;
+  }
+
+  .tokenErrorLink {
+    color: rgb(48, 143, 194);
+ }

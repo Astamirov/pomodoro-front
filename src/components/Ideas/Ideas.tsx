@@ -17,7 +17,7 @@ const Ideas = () => {
   const userLogin = useSelector(
     (state: RootState) => state.signInSlice.user.login
   );
-console.log(userLogin)
+  console.log(userLogin);
   const [sortType, setSortType] = useState("latest");
   const token = useSelector((state: RootState) => state.ideas.token);
   const handleCommentSubmit = async () => {
@@ -37,12 +37,15 @@ console.log(userLogin)
     setSortType("oldest");
   };
 
-  const sortedComments = [...comments]; // Создаем копию комментариев, чтобы не изменять оригинальный массив
-
+  const sortedComments = [...comments];
   if (sortType === "latest") {
-    sortedComments.sort((a, b) => new Date(b.date) - new Date(a.date));
+    sortedComments.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
   } else if (sortType === "oldest") {
-    sortedComments.sort((a, b) => new Date(a.date) - new Date(b.date));
+    sortedComments.sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
   }
 
   useEffect(() => {
@@ -54,6 +57,9 @@ console.log(userLogin)
       year: "numeric",
       month: "short",
       day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: false,
     };
     return new Date(isoDate).toLocaleDateString("en-US", options);
   };
@@ -105,7 +111,7 @@ console.log(userLogin)
               </div>
               <div className={style.comment__inner}>
                 <p>{comment.text}</p>
-                {userLogin === comment.username ? (
+                {userLogin !== comment.username ? (
                   <button
                     className={style.removeBtnComment}
                     onClick={() => handleRemove(comment._id)}
@@ -121,9 +127,9 @@ console.log(userLogin)
         </ul>
       </div>
       {!token ? (
-        <p>
+        <p className={style.tokenError}>
           Оставлять комментарии могут только авторизованные пользователи,{" "}
-          <Link to="/login">aвторизоваться?</Link>
+          <Link  className={style.tokenErrorLink} to="/login">aвторизоваться?</Link>
         </p>
       ) : (
         <>
