@@ -13,6 +13,6 @@ declare module "string-hash" {
   export default hash;
 }
 
-declare module 'uuid' {
-    export function v4(options?: any, buffer?: any, offset?: any): any;
-  }
+declare module "uuid" {
+  export function v4(options?: unknown, buffer?: unknown, offset?: unknown): unknown;
+}

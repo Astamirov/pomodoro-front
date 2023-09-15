@@ -1,11 +1,10 @@
-import { useState, ChangeEvent, FormEvent, useEffect } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authSignIn } from "../../features/signInSlice";
 import { AppDispatch, RootState } from "../../app/store";
 import style from "./SignIn.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
-import { oneUser } from "../../features/usersSlice";
 
 const SignIn = () => {
   const [login, setLogin] = useState("");
