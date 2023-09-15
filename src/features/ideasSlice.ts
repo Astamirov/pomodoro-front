@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
 
-// Замените этот тип на актуальный тип для данных, которые возвращает ваш сервер
 export type Comments = {
   _id: string;
   text: string;
   author: string;
   error: string | null | unknown;
   username: string | null;
+  date: string;
 };
 
 type StateApp = {
@@ -16,6 +16,7 @@ type StateApp = {
   comments: Comments[];
   username: string | null;
   userId: string | null;
+  date: string;
 };
 
 const initialState: StateApp = {
@@ -24,11 +25,11 @@ const initialState: StateApp = {
   comments: JSON.parse(localStorage.getItem("comments") || "[]"),
   username: null,
   userId: null,
+  date: "",
 };
 
 export const loadComments = createAsyncThunk(
   "ideas/loadComments",
-  // Здесь должен быть ваш запрос к серверу для загрузки комментариев
   async (_, thunkAPI) => {
     try {
       const response = await fetch("http://localhost:3000/comments");
@@ -78,7 +79,7 @@ export const removeComment = createAsyncThunk<
   const token = thunkAPI.getState().ideas.token;
   try {
     const res = await fetch(
-        `http://localhost:3000/deleteComment/${commentId}`,
+      `http://localhost:3000/deleteComment/${commentId}`,
       {
         method: "DELETE",
         headers: {
@@ -87,15 +88,16 @@ export const removeComment = createAsyncThunk<
         },
       }
     );
-    console.log(res)
+    console.log(res);
     if (res.ok) {
-        console.log('ok')
+      console.log("ok");
       return commentId;
     }
-    
+
     const comment = await res.json();
     return thunkAPI.rejectWithValue(comment);
-  } catch (error) {console.log('osk')
+  } catch (error) {
+    console.log("osk");
     return thunkAPI.rejectWithValue((error as Error).message);
   }
 });
@@ -103,21 +105,26 @@ export const removeComment = createAsyncThunk<
 const ideasSlice = createSlice({
   name: "ideas",
   initialState,
-  reducers: {
-    // removeComment: (state, action: PayloadAction<string>) => {
-    //   state.comments = state.comments.filter((comment) => comment.id !== action.payload);
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(loadComments.fulfilled, (state, action) => {
         state.comments = action.payload;
+        state.comments = action.payload.map((comment) => ({
+          ...comment,
+          date: comment.date,
+        }));
       })
       .addCase(loadComments.rejected, (state, action) => {
         state.error = action.payload;
       })
       .addCase(postComment.fulfilled, (state, action) => {
         state.username = action.meta.arg.author.login;
+
+        state.comments.push({
+          ...action.payload,
+          date: action.payload.date,
+        });
       })
       .addCase(postComment.rejected, (state, action) => {
         state.error = action.payload;
