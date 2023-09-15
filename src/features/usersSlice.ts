@@ -5,20 +5,21 @@ type User = {
   _id: string;
   login: string;
   password: string;
+  result: number;
 };
 
 type StateUsers = {
   users: User[];
-  oneUser: User[]
+  oneUser: User[];
 };
 
 const initialState: StateUsers = {
   users: [],
-  oneUser: []
+  oneUser: [],
 }; 
 
 
-
+//один юзер
 export const oneUser = createAsyncThunk<
   User[],
   void,
@@ -38,8 +39,34 @@ export const oneUser = createAsyncThunk<
   }
 });
 
+//изменение result
+export const patchResult = createAsyncThunk<
+User[],
+{ rejectValue: unknown; state: RootState }
+>(
+  'user/patchResult',
+  async (_, thunkAPI) => {
+    try {
+      // Выполните PATCH-запрос на сервер с использованием fetch
+      const res = await fetch("http://localhost:3000/userResult", {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${thunkAPI.getState().signInSlice.token}`,
 
+        },
+      });
 
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      // Если произошла ошибка, отклоните thunk с сообщением об ошибке
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+//отображение всех юзеров
 export const fetchUsers = createAsyncThunk<
   User[],
   void,
@@ -67,6 +94,10 @@ const usersSlice = createSlice({
     })
     .addCase(oneUser.fulfilled, (state,action) => {
       state.oneUser = action.payload
+    })
+    .addCase(patchResult.fulfilled, (state, action) => {
+      // Обработка успешного завершения thunk
+      state.oneUser = action.payload;
     })
   },
 });

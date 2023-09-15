@@ -3,9 +3,11 @@ import style from "./Timer.module.css";
 import { BsGear, BsArrowRightCircleFill } from "react-icons/bs";
 import SettingsModal from "./SettingModal";
 import dingSound from "./sounds/zvonok.mp3";
-import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../app/store";
 import { useTranslation } from 'react-i18next';
+import {patchResult} from "../../features/usersSlice"
+import { removeTodo } from "../../features/todosSlice";
 
 
 const padTime = (time: number) => {
@@ -25,7 +27,7 @@ const Timer = () => {
   const { t } = useTranslation();
 
   const todos = useSelector((state: RootState) => state.todosReducer.todos);
-
+const dispatch = useDispatch<AppDispatch>()
   const handleApplyBreakTime = () => {
     setIsSettingsOpen(true);
   };
@@ -50,9 +52,13 @@ const Timer = () => {
     setIsBreakTime(!isBreakTime);
   };
 
+  
   const handleSkip = () => {
+    const lastId = todos[todos.length -1]._id 
     toggleBreak();
     resetTimer();
+    dispatch(patchResult())
+    dispatch(removeTodo(lastId))
   };
 
   const handleStop = () => {
