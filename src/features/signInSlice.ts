@@ -7,29 +7,27 @@ type User = {
   password: string;
 };
 
-  
-  type stateApp = {
-    user: User;
-    error: null | string | unknown;
-    signIn: boolean;
-    token: string | null;
-  };
-  
-  const initialState: stateApp = {
-    user: {
+type stateApp = {
+  user: User;
+  error: null | string | unknown;
+  signIn: boolean;
+  token: string | null;
+};
+
+const initialState: stateApp = {
+  user: {
     _id: "",
     login: "",
     password: "",
   },
-    error: null,
-    signIn: false,
-    token: localStorage.getItem("token"),
-  };
-
+  error: null,
+  signIn: false,
+  token: localStorage.getItem("token"),
+};
 
 export const authSignIn = createAsyncThunk<
   string,
-  { login: string; password: string },
+  User,
   { rejectValue: unknown; state: RootState }
 >("auth/signin", async ({ login, password }, thunkAPI) => {
   try {
@@ -65,10 +63,10 @@ const singInSlice = createSlice({
       })
       .addCase(authSignIn.fulfilled, (state, action) => {
         (state.signIn = false),
-        (state.error = null),
-        (state.token = action.payload);
+          (state.error = null),
+          (state.token = action.payload);
         state.user.login = action.meta.arg.login;
-        state.user._id = action.payload;
+        state.user._id = action.meta.arg._id;
       });
   },
 });

@@ -1,13 +1,16 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
+import { v4 as uuidv4 } from 'uuid';
 
+// Замените этот тип на актуальный тип для данных, которые возвращает ваш сервер
 export type Comments = {
   _id: string;
+  id: string;
   text: string;
+  date: string;
   author: string;
   error: string | null | unknown;
   username: string | null;
-  date: string;
 };
 
 type StateApp = {
@@ -16,7 +19,6 @@ type StateApp = {
   comments: Comments[];
   username: string | null;
   userId: string | null;
-  date: string;
 };
 
 const initialState: StateApp = {
@@ -25,11 +27,11 @@ const initialState: StateApp = {
   comments: JSON.parse(localStorage.getItem("comments") || "[]"),
   username: null,
   userId: null,
-  date: "",
 };
 
 export const loadComments = createAsyncThunk(
   "ideas/loadComments",
+  // Здесь должен быть ваш запрос к серверу для загрузки комментариев
   async (_, thunkAPI) => {
     try {
       const response = await fetch("http://localhost:3000/comments");
@@ -109,22 +111,19 @@ const ideasSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadComments.fulfilled, (state, action) => {
-        state.comments = action.payload;
-        state.comments = action.payload.map((comment) => ({
-          ...comment,
-          date: comment.date,
-        }));
+       
+        const commentsWithIds = action.payload.map((comment) => ({
+            ...comment,
+            id: uuidv4(), // Добавляем уникальный идентификатор
+          }));
+          state.comments = commentsWithIds;
+          
       })
       .addCase(loadComments.rejected, (state, action) => {
         state.error = action.payload;
       })
       .addCase(postComment.fulfilled, (state, action) => {
         state.username = action.meta.arg.author.login;
-
-        state.comments.push({
-          ...action.payload,
-          date: action.payload.date,
-        });
       })
       .addCase(postComment.rejected, (state, action) => {
         state.error = action.payload;
