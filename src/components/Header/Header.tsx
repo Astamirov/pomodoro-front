@@ -58,6 +58,7 @@ const Header = () => {
   };
   return (
     <header className={style.header}>
+      <div className={style.haeder_container}>
       <div className={style.header_content}>
         <Link to="/">
           <h3 className={style.content_h1}>
@@ -100,6 +101,9 @@ const Header = () => {
                 <BiWorld />
               </a>
               <div className={style.block_lang}>
+                <button onClick={handleClickOnButton} className={style.lang_block} >{russ === true ? "Русский" : "English"}</button>
+                {open2 && (<div className={style.language1}><button className={style.language2} onClick={() => changeLanguage('en')}>English</button> <button onClick={() => changeLanguageRu('ru')}>Русский</button></div>)}
+
                 <button
                   onClick={handleClickOnButton}
                   className={style.lang_block}
@@ -115,7 +119,7 @@ const Header = () => {
                       Русский
                     </button>
                   </div>
-                )}
+
               </div>
             </div>
             <li className={style.statistics}>
@@ -179,6 +183,7 @@ const Header = () => {
             </li>
           </ul>
         </nav>
+      </div>
       </div>
     </header>
   );

@@ -78,22 +78,22 @@ const Footer = () => {
           </div>
           <div className={style.footer_version}>
             <div className={style.version_block}>
-              <div>
+              <div className={style.company_block}>
                 <a className={style.icon_partner} href="#">
                   Version 22.0.4
                 </a>
               </div>
-              <div>
+              <div className={style.company_block}>
                 <a className={style.icon_partner} href="#">
                   Privacy Policy
                 </a>
               </div>
-              <div>
+              <div className={style.company_block}>
                 <a className={style.icon_partner} href="#">
                   Terms and Conditions
                 </a>
               </div>
-              <div>
+              <div className={style.company_block}>
                 <a className={style.icon_partner} href="#">
                   Slack Community
                 </a>

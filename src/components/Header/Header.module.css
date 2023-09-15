@@ -9,17 +9,25 @@ ul li {
 a {
     text-decoration: none;
 }
+
+.haeder_container {
+    max-width: 1511px;
+}
 .header_content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1f4d7a;
     padding: 13px 30px;
+    background-color: #1f4d7a;
     position: relative;
 }
 .header_logo {
-    font-size: 20px;
+    font-size: 30px;
     color: rgb(201, 54, 9);
+    transition: .4s;
+}
+.header_logo:hover {
+    transform: rotate(365deg);
 }
 .content_h1 {
     display: flex;
@@ -74,6 +82,7 @@ a {
     font-size: 20px;
     color: #FFF;
     display: flex;
+    margin-right: 7px;
 }
 .header_laung {
     background: transparent;
@@ -158,9 +167,7 @@ a {
 .profil {
     display: flex;
     align-items: start;
-    flex-direction: column;
-
-    
+    flex-direction: column;  
 }
 .btn_profil {
     display: flex;
@@ -173,8 +180,6 @@ a {
 }
 .link_profil{
     color: #FFF;
-
-
 }
 .cg_profile {
     display: flex;
@@ -197,10 +202,100 @@ a {
 }
 .entrance_use:hover{
     color: rgb(175, 175, 175);
-
 }
 
 .authorization_user:hover{
     color: rgb(175, 175, 175);
-
 }
+
+
+/* Адаптив */
+
+@media screen and (max-width: 970px) {
+    .header_link {
+        font-size: 12px;
+    }
+    .header_logo {
+        font-size: 16px;
+    }
+    .lang_block {
+        font-size: 12px;
+    }
+    .a_logo {
+        font-size: 16px;
+    }
+    .header_ul {
+        gap: 30px;
+    }
+    .profil_btn {
+        font-size: 12px;
+    }
+    .header_ideas {
+        font-size: 12px;
+    }
+    .header_stat {
+        font-size: 12px;
+    }
+    .header_settings {
+        font-size: 12px;
+    }
+    .header_world {
+        font-size: 12px;
+    }
+    .header_user_login {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .a_logo {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .header_content {
+        
+    }
+    .header {
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .header_link {
+        font-size: 10px;
+    }
+    .profil_btn {
+        font-size: 10px;
+    }
+    .header_logo {
+        font-size: 14px;
+    }
+    .lang_block {
+        font-size: 10px;
+    }
+    .a_logo {
+        font-size: 14px;
+    }
+    .header_ul {
+        gap: 15px;
+    }
+    .header_ideas {
+        font-size: 10px;
+    }
+    .header_stat {
+        font-size: 10px;
+    }
+    .header_settings {
+        font-size: 10px;
+    }
+    .header_world {
+        font-size: 10px;
+    }
+    .header_user_login {
+        font-size: 10px;
+    }
+}
+
+
