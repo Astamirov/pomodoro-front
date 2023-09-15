@@ -18,9 +18,8 @@ const Header = () => {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
-  const [russ, setRuss] = useState(false);
+  const [russ, setRuss] = useState(true);
   
-  const user = useSelector((state: RootState) => state.usersSlice.users);
   const oneUs = useSelector((state:RootState) => state.usersSlice.oneUser)
   const token = useSelector((state: RootState) => state.signInSlice.token);
 

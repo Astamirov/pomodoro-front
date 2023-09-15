@@ -14,6 +14,7 @@ import {
   updateCompleted,
   removeTodo,
 } from "../../features/todosSlice";
+  import { patchResult} from "../../features/usersSlice"
 import { useTranslation } from "react-i18next";
 
 
@@ -68,10 +69,14 @@ const Todos = () => {
   const handalRemove = (_id: string): void => {
     dispatch(removeTodo(_id));
   };
+  const handleClosed = (id) => {
+    dispatch(patchResult())
+    dispatch(removeTodo(id))
+  }
 
   return (
     <div className={style.todos_form}>
-      <h4 className={style.title}>ЗАПЛАНИРОВАНО {todos.length > 0 ? todos.length : null}</h4>
+      <h4 className={style.title}>{t('planned')} {todos.length > 0 ? todos.length : null}</h4>
       <div className={style.todos}>
         <form className={style.form__add} onSubmit={(e) => handleSubmit(e)}>
           <select
@@ -136,7 +141,7 @@ const Todos = () => {
                     <button onClick={() => handleCount(todo._id)}><FaPlus /> Добавить</button>
                     <button disabled={todo.count === 1}onClick={() => handleCountInc(todo._id)}><FaMinus /> Убрать один</button>
                     <hr />
-                    <button><MdOutlineDoneOutline/> Указать как выполнено</button>
+                    <button onClick={() =>handleClosed(todo._id)}><MdOutlineDoneOutline/> Указать как выполнено</button>
                     <button onClick={()=> handalRemove(todo._id)}><AiTwotoneDelete/> Удалить</button>
                   
                     </div>
@@ -158,6 +163,7 @@ const Todos = () => {
     
       </div>
       <hr />
+
     </div>
   );
 };
