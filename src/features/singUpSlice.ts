@@ -2,15 +2,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
 
 type User = {
-    _id: String;
-    login: String;
-    password: String;
+    _id: string;
+    login: string;
+    password: string;
   };
   
   type stateApp = {
     user: User[];
     error: null | string | unknown;
-    signUp: Boolean;
+    signUp: boolean;
   };
   
   const initialState: stateApp = {

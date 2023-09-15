@@ -12,3 +12,7 @@ declare module "string-hash" {
   function hash(input: string): number;
   export default hash;
 }
+
+declare module 'uuid' {
+    export function v4(options?: any, buffer?: any, offset?: any): any;
+  }

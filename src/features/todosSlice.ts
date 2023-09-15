@@ -34,6 +34,7 @@ export const addTodo = createAsyncThunk<
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${thunkAPI.getState().signInSlice.token}`,
       },
       body: JSON.stringify({ text, category }),
     });
@@ -105,12 +106,18 @@ export const updateCount = createAsyncThunk<
 
 //отоброжение тудушек
 export const fetchTodo = createAsyncThunk<
-  Todo[],
+  Todo,
   void,
   { rejectValue: string }
 >("todos/getTodo", async (_, thunkAPI) => {
   try {
-    const res = await fetch("http://localhost:3000/todos");
+    const res = await fetch("http://localhost:3000/todos", 
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${thunkAPI.getState().signInSlice.token}`,
+      },
+    });
     const todo = await res.json();
     return thunkAPI.fulfillWithValue(todo);
   } catch (error) {
