@@ -91,7 +91,7 @@
     cursor: pointer;
     position: absolute;
     right: 20px;
-    top: 37px;
+    top: 42%;
     
 }
 
@@ -99,18 +99,52 @@
     align-items: center;
     margin-right: 15px;
     text-align: center;
+    width: 65px;
 }
 
 
 .user__avatar {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     text-align: center;
     align-items: center;
-    padding-top: 13px;
-    margin-right: 5px;
-    margin-bottom: 10px;
+    padding-top: 15px;
+    margin: 0 auto 10px;
+    box-shadow: #313131;
 }
+
+.comment__date {
+    font-size: 10px;
+    color: #807f7f;
+    margin-top: 5px;
+}
+
+.sort {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  /* Стили для кнопок сортировки */
+  .sortBtn {
+    padding: 5px 10px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  /* Стиль для выбранной кнопки "Новые" */
+  .sortBtn:focus,
+  .sortBtn.active {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    outline: none; /* Убираем стандартное браузерное подчеркивание при фокусе */
+  }

@@ -11,8 +11,8 @@ type User = {
   type stateApp = {
     user: User;
     error: null | string | unknown;
-    signIn: Boolean;
-    token: String | null;
+    signIn: boolean;
+    token: string | null;
   };
   
   const initialState: stateApp = {
@@ -29,7 +29,7 @@ type User = {
 
 export const authSignIn = createAsyncThunk<
   string,
-  User,
+  { login: string; password: string },
   { rejectValue: unknown; state: RootState }
 >("auth/signin", async ({ login, password }, thunkAPI) => {
   try {
@@ -68,7 +68,7 @@ const singInSlice = createSlice({
         (state.error = null),
         (state.token = action.payload);
         state.user.login = action.meta.arg.login;
-        state.user._id = action.meta.arg._id;
+        state.user._id = action.payload;
       });
   },
 });
