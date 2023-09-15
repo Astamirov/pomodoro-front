@@ -138,8 +138,85 @@ a {
 }
 .footer_bottom_text {
   text-align: center;
-  /* width: 950px; */
+  /* max-width: 950px; */
   color: #707070;
   font-size: 17px;
   font-weight: 400;
 }
+
+
+/* Адаптив */
+
+@media screen and (max-width: 830px) {
+  .footer {
+    
+  }
+    .footer_container {
+     width: 600px;
+    }
+    .company_block {
+      margin: auto;
+      margin-top: -20px;
+    }
+    .version_block {
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+    }
+    .footer_email {
+     margin-left: 40px;
+     margin-top: 20px;
+    }
+    .footer_contenter {
+      width: 200px;
+    }
+}
+
+@media screen and (max-width: 830px) {
+  .footer_container {
+   width: 600px;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .block_company {
+   flex-direction: column;
+   text-align: center;
+  }
+  .left_block,
+  .right_block {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .footer_bottom_text {
+    font-size: 12px;
+    display: none;
+  }
+  .footer_icons {
+    display: flex;
+    flex-direction: column;
+  }
+  .icon_flex {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .footer_bottom_text {
+    font-size: 14px;
+    width: 350px;
+  margin: 0 auto;
+  }
+  .footer_icons,
+  .version_block {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+}
+

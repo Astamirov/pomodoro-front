@@ -13,8 +13,7 @@ import SignUp from "./components/SignUp/SignUp";
 
 function App() {
   return (
-    <>
-      
+    <>   
       <Header />
       <Routes>
         <Route path="/" element={
